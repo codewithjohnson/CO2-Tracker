@@ -22,14 +22,14 @@
 
       <!-- SECTION TWO:  -->
       <div class="display">
-        <img src="./uses.gif" alt="" />
+        <img src="./green_life.gif" alt="" />
       </div>
 
       <!-- THIRD SECTION: FORM DETAILS -->
       <div class="form_container">
         <div class="region_container">
           <label for="region">Enter Region Code</label>
-          <input type="text" name="region" id="region">
+          <input type="text" name="region" id="region" required>
           <div class="region_link">
             <a href="https://api.electricitymap.org/v3/zones" target="_blank">click to get region</a>
           </div>
@@ -37,16 +37,42 @@
 
         <div class="api_container">
           <label for="api">Enter API</label>
-          <input type="text" name="api" id="api">
+          <input type="text" name="api" id="api" required>
           <div class="api_link">
             <a href="https://www.co2signal.com/" target="_blank">click to get API</a>
           </div>
         </div>
       </div>
 
+      <!-- FOURTH SECTION: SUBMIT BTN -->
       <div class="submit">
-        <button class="btn">SUBMIT</button>
+        <button class="btn" id="submit_btn">SUBMIT</button>
+      </div>
+
+
+      <!-- FIFTH SECTION: DISPLAY RESULTS -->
+      <div class="template">
+        <table>
+        <tr>
+          <td class="left">region</td>
+          <td class="content"  id="reg_table_data">Nigeria</td>
+        </tr>
+        <tr>
+          <td class="left">carbon usage</td>
+          <td class="content"  id="carbon_table_data">292 grams emitted per Kwhr</td>
+        </tr>
+        <tr>
+          <td class="left">fosil fuel percentage</td>
+          <td class="content"  id="fuel_table_data">28% is used to generate electricity</td>
+        </tr>
+        </table>
+
+        <div class="reset_container">
+          <button id="reset" class="reset_btn">Reset Region</button>
+        </div>
       </div>
     </main>
+
+    <script src="main.js"></script>
   </body>
 </html>
