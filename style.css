@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   --body-bg: #3f704d;
   --font-fam: "Poppins", sans-serif;
@@ -32,7 +33,9 @@
   --table-pd: 0.8rem;
   --table-font: 0.8rem;
 }
-
+html {
+  height: 100%;
+}
 
 body {
   /* height: 100vh; */
@@ -56,7 +59,7 @@ main {
   color: white;
   padding: 2rem;
   border-radius: 0.4rem;
-  max-width:455px;
+  max-width: 455px;
 }
 
 :is(.region_container, .api_container) > input[type="text"] {
@@ -156,9 +159,8 @@ td {
   background-color: var(--btn-hover-color);
 }
 
-
 @media screen and (max-width: 768px) {
-  main{
+  main {
     width: 93%;
   }
 }
