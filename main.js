@@ -38,7 +38,9 @@ function initialize() {
 // HANDLE SUBMIT DATA
 function handleSubmit(e) {
   e.preventDefault();
-  handleData(API.value, region.value);
+  if (API.value != "" && region.value != "") {
+    handleData(API.value, region.value);
+  }
 }
 
 // COLLECT DETAILS AND DISPLAY TO VIEW
