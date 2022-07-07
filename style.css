@@ -38,8 +38,7 @@ html {
 }
 
 body {
-  /* height: 100vh; */
-  margin-top:2rem;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
