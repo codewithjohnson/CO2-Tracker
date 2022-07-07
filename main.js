@@ -24,10 +24,9 @@ function initialize() {
 
   // IF THERE IS NOTHING IN STORAGE
   if (storedApiKey === null || storedRegionKey === null) {
-    console.log("no value");
     form.hidden = false;
     submitBtn.hidden = false;
-    // results.hidden = true;
+    results.hidden = true;
   } else {
     displayCarbonData(storedApiKey, storedRegionKey);
     form.hidden = true;
