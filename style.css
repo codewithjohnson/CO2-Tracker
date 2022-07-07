@@ -156,3 +156,10 @@ td {
 .reset_btn:hover {
   background-color: var(--btn-hover-color);
 }
+
+
+@media screen and (max-width: 768px) {
+  main{
+    width: 93%;
+  }
+}
