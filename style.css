@@ -105,9 +105,8 @@ main {
   background-color: #008000bb;
 }
 
-.template {
+.results {
   width: 100%;
-  /* border: 1px solid white; */
   margin-top: var(--mt);
 }
 
