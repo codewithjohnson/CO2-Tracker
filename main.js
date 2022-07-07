@@ -59,29 +59,6 @@ function resetData(e) {
 }
 
 // DISPLAY ALL INPUT DATA TO VIEW
-// async function displayCarbonData(apiKey, region_code) {
-//   try {
-//     const res = await fetch(
-//       `https://cors-anywhere.herokuapp.com/https://api.co2signal.com/v1/latest?countryCode=${region_code}`,
-//       {
-//         headers: {
-//           "auth-token": apiKey,
-//         },
-//       }
-//     );
-//     const data = await res.json();
-//     console.log(data);
-//     const CO2_value = Math.floor(data.data.carbonIntensity);
-//     const FuelPercent = data.data.fossilFuelPercentage.toFixed(2);
-//     carbonData.innerHTML = `<span> ${CO2_value} grams C0<sub>2</sub> emitted per Kwhr</span>`;
-//     fuelData.textContent = `${FuelPercent} % of fossil fuels used to generate electricity)`;
-//     regionData.textContent = region_code;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// DISPLAY ALL INPUT DATA TO VIEW
 async function displayCarbonData(apiKey, region_code) {
   const URL = `https://cors-anywhere.herokuapp.com/https://api.co2signal.com/v1/latest?countryCode=${region_code}`;
   const options = {
