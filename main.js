@@ -1,11 +1,12 @@
 // FORM DETAILS
 const form = document.querySelector(".form_container");
 const region = document.querySelector("#region");
-const apiKey = document.querySelector("#api");
+const API = document.querySelector("#api");
 const submitBtn = document.querySelector("#submit_btn");
 
 // RESULTS
 const results = document.querySelector(".results");
+const regionData = document.querySelector("#reg_table_data");
 const carbonData = document.querySelector("#carbon_table_data");
 const fuelData = document.querySelector("#fuel_table_data");
 const resetBtn = document.querySelector("#reset");
@@ -26,7 +27,7 @@ function initialize() {
     console.log("no value");
     form.hidden = false;
     submitBtn.hidden = false;
-    results.hidden = true;
+    // results.hidden = true;
   } else {
     displayCarbonData(storedApiKey, storedRegionKey);
     form.hidden = true;
@@ -38,17 +39,17 @@ function initialize() {
 // HANDLE SUBMIT DATA
 function handleSubmit(e) {
   e.preventDefault();
-  handleData(apiKey.value, region.value);
+  handleData(API.value, region.value);
 }
 
 // COLLECT DETAILS AND DISPLAY TO VIEW
-function handleData(apiKey, region) {
+function handleData(apiKey, region_code) {
   localStorage.setItem("apiKey", apiKey);
-  localStorage.setItem("regionName", region);
+  localStorage.setItem("regionName", region_code);
   results.hidden = false;
   form.hidden = true;
   submitBtn.hidden = true;
-  displayCarbonData(apiKey, region);
+  displayCarbonData(apiKey, region_code);
 }
 
 // RESET ALL DATA
@@ -58,15 +59,25 @@ function resetData(e) {
   location.reload();
 }
 
-async function displayCarbonData(apiKey, region) {
-  const res = await fetch(
-    `https://cors-anywhere.herokuapp.com/https://api.co2signal.com/v1/latest?countryCode=${region}`,
-    {
-      headers: {
-        "auth-token": apiKey,
-      },
-    }
-  );
-  const data = await res.json();
-  const CO2_value = data.data.carbonIntensity;
+// DISPLAY ALL INPUT DATA TO VIEW
+async function displayCarbonData(apiKey, region_code) {
+  try {
+    const res = await fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.co2signal.com/v1/latest?countryCode=${region_code}`,
+      {
+        headers: {
+          "auth-token": apiKey,
+        },
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+    const CO2_value = Math.floor(data.data.carbonIntensity);
+    const FuelPercent = data.data.fossilFuelPercentage.toFixed(2);
+    carbonData.innerHTML = `<span> ${CO2_value} grams C0<sub>2</sub> emitted per Kwhr</span>`;
+    fuelData.textContent = `${FuelPercent} % of fossil fuels used to generate electricity)`;
+    regionData.textContent = region_code;
+  } catch (error) {
+    console.log(error);
+  }
 }

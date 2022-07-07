@@ -57,6 +57,7 @@ main {
   color: white;
   padding: 2rem;
   border-radius: 0.4rem;
+  max-width:455px;
 }
 
 :is(.region_container, .api_container) > input[type="text"] {
